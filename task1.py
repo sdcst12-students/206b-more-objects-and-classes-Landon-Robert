@@ -1,11 +1,10 @@
 #!python3
-
+import math
 class quadratic:
     a = 0
     b = 0
     c = 0
     roots = []
-    vertex = []
 
     def discriminant(self):
         # requires no positional arguments
@@ -50,8 +49,16 @@ class quadratic:
         # list self.roots
         # list should be sorted in ascending order
         # roots should be rounded to 2 decimal places
-        if self.hasRealRoots() == True and self.discriminant
-        pass
+        roots = []
+        if self.hasRealRoots() == True:
+            f1 = (-1*self.b + math.sqrt(self.b**2 - 4*self.a*self.c))/(2*self.a)
+            f2 = (-1*self.b - math.sqrt(self.b**2 - 4*self.a*self.c))/(2*self.a)
+            roots.append(f1)
+            roots.append(f2)
+            roots.sort()
+            return roots
+        else: 
+            return None
 
     def axisOfSymmetry(self):
         # requires no positional arguments
@@ -59,16 +66,17 @@ class quadratic:
         # to determine the x value that is for the equation
         # of the axis of symmetry
         # should return the x value for the axis of symmetry
-        pass
-        return
+        return -1*self.b/2*self.a
 
     def vertex(self):
         # requires no positional arguments
         # will make use of class properties a,b and c
         # to determine the x,y value of the vertex
         # should return the a list with the x and y coordinates of the vertex
-        
-        return
+        vertex = []
+        vertex.append(self.axisOfSymmetry())
+        vertex.append(self.a*self.axisOfSymmetry()**2 + self.b*self.axisOfSymmetry() + self.c)
+        return vertex
        
     def __init__(self,a,b,c):
         # this should require 3 positional arguments and assign the values
@@ -76,7 +84,6 @@ class quadratic:
         self.a = a
         self.b = b
         self.c = c
-
 
 
 if __name__ == "__main__":
