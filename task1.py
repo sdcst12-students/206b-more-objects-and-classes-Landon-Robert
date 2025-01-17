@@ -49,16 +49,12 @@ class quadratic:
         # list self.roots
         # list should be sorted in ascending order
         # roots should be rounded to 2 decimal places
-        roots = []
         if self.hasRealRoots() == True:
-            f1 = (-1*self.b + math.sqrt(self.b**2 - 4*self.a*self.c))/(2*self.a)
-            f2 = (-1*self.b - math.sqrt(self.b**2 - 4*self.a*self.c))/(2*self.a)
-            roots.append(f1)
-            roots.append(f2)
-            roots.sort()
-            return roots
-        else: 
-            return None
+            f1 = (-1*self.b + math.sqrt(self.discriminant()))/(2*self.a)
+            f2 = (-1*self.b - math.sqrt(self.discriminant()))/(2*self.a)
+            self.roots.append(round(f1,2))
+            self.roots.append(round(f2,2))
+            self.roots.sort()
 
     def axisOfSymmetry(self):
         # requires no positional arguments
@@ -66,7 +62,7 @@ class quadratic:
         # to determine the x value that is for the equation
         # of the axis of symmetry
         # should return the x value for the axis of symmetry
-        return -1*self.b/2*self.a
+        return (-1*self.b)/(2*self.a)
 
     def vertex(self):
         # requires no positional arguments
@@ -75,7 +71,7 @@ class quadratic:
         # should return the a list with the x and y coordinates of the vertex
         vertex = []
         vertex.append(self.axisOfSymmetry())
-        vertex.append(self.a*self.axisOfSymmetry()**2 + self.b*self.axisOfSymmetry() + self.c)
+        vertex.append(self.a*(self.axisOfSymmetry()**2) + self.b*self.axisOfSymmetry() + self.c)
         return vertex
        
     def __init__(self,a,b,c):
